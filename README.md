@@ -1,1 +1,3 @@
-# Faculty-Leave-Management
+# Faculty-Leave-Portal
+
+	A portal to manage faculty leave applications at an academic university.
