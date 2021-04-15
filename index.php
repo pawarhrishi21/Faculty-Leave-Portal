@@ -1,6 +1,1 @@
-
 <?php include "login.php"; ?>
-
-
-
-

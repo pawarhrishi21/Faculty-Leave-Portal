@@ -1,4 +1,5 @@
 <!-- Header for all the pages -->
+<?php?>
 
 <!DOCTYPE html>
 <html lang="en">
