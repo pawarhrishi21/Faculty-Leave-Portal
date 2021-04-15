@@ -1,0 +1,22 @@
+CREATE TABLE users (
+    User_id SERIAL PRIMARY KEY,
+    Password VARCHAR(255) NOT NULL,
+    Name VARCHAR(225) NOT NULL,
+    Dept VARCHAR(225),
+    Position VARCHAR(225) NOT NULL
+);
+
+INSERT INTO users ( Password, Name, Dept, Position) VALUES  ('password123', 'Dr. Harpreet Singh', 'Mechanical ', 'HOD');
+INSERT INTO users ( Password, Name, Dept, Position) VALUES ( 'ropar123', 'Dr. Devaraj ', 'Civil', 'HOD');
+INSERT INTO users ( Password, Name, Dept, Position) VALUES ( 'iitropar123', 'Dr. Ekta Singla', 'Mechanical ', 'Assistant Professor'), ( 'hande123', 'Dr. Vinayak Hande ', 'Electrical ', 'HOD');
+INSERT INTO users ( Password, Name, Dept, Position) VALUES ( 'ashishsahani', 'Dr. Ashish Sahani', 'CSE', 'HOD'), ( 'devranjansamantha', 'Dr. Devranjan', 'Electrical', 'Dean Faculty Affairs'), ( 'directoratiit', 'Dr. Rajeev Ahuja ', 'Civil ', 'Director'), ( 'deanatiit', 'Dr. Kalaiselvi', 'CSE', 'Dean Academic Affairs');
+INSERT INTO users ( Password, Name, Dept, Position) VALUES ( '12345678', 'Dr. Hrishikesh Pawar', 'Mechanical', 'Dean Student Affairs'), ( 'students0123', 'Dr. Prabhat Agnihotri', 'Civil', 'Dean Student Affairs');
+
+
+CREATE TABLE leaves (
+    User_id int NOT NULL PRIMARY KEY,
+    leaves_left int NOT NULL,
+    year int NOT NULL,
+    FOREIGN KEY (User_id) REFERENCES users(User_id)
+);
+INSERT INTO leaves (User_id, leaves_left, year) VALUES ('9', '5', '2021'), ('5', '7', '2021'), ('8', '8', '2021'), ('6', '10', '2021'), ('7', '11', '2021'), ('4', '9', '2021'), ('3', '8', '2021'), ('1', '10', '2021'), ('2', '11', '2021'), ('10', '12', '2021');
