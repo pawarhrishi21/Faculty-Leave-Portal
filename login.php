@@ -2,8 +2,6 @@
 
 <?php
 
-$db_connection = pg_connect("host=localhost dbname=faculty-portal user=postgres password=hp");
-
 if(!$db_connection){
     echo "Couldn't connect to database";
 }
@@ -18,7 +16,10 @@ else
         if($row = pg_fetch_row($result)) 
         {
             #User id and password verified
+            session_start();
+            $_SESSION['id'] = $id;
             header("Location: user.php");
+            exit;
         }
         else
         {
@@ -30,8 +31,6 @@ else
     }
 }
 ?>
-
-
 
 
 <form class="mx-auto mt-5 border border-dark py-5" action="login.php" method="POST" style="width:700px">

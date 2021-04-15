@@ -1,5 +1,7 @@
 <!-- Header for all the pages -->
-<?php?>
+<?php
+$db_connection = pg_connect("host=localhost dbname=faculty-portal user=postgres password=hp");
+?>
 
 <!DOCTYPE html>
 <html lang="en">
