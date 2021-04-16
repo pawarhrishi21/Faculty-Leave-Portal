@@ -25,7 +25,9 @@ else
         {
             # Could not match credentials
 ?>
-            <p class="error-message-login"> <?php echo "Please check your User ID and Password and try again."; ?> </p>
+            <div class="alert alert-danger" role="alert">
+            Please check your User ID and Password and try again.
+            </div>
 <?php
         }
     }

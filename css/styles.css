@@ -6,3 +6,7 @@
     margin-bottom: 0;
     height: 100px;
 }
+
+.error-message-login{
+    color:firebrick;
+}
