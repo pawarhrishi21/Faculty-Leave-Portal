@@ -13,17 +13,15 @@ else
         $query = "SELECT userid,password FROM users WHERE userid='$id' and password='$password'";
         $result = pg_query($db_connection, $query);
     
-        if($row = pg_fetch_row($result)) 
+        if($row = pg_fetch_row($result)) # User id and password verified 
         {
-            #User id and password verified
             session_start();
             $_SESSION['id'] = $id;
             header("Location: user.php");
             exit;
         }
-        else
+        else # Could not match credentials
         {
-            # Could not match credentials
 ?>
             <div class="alert alert-danger" role="alert">
             Please check your User ID and Password and try again.
