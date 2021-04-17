@@ -56,7 +56,4 @@
     }
 ?>
 
-
-
-
 <?php include "static/footer.php"?>

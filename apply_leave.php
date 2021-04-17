@@ -3,9 +3,9 @@
     if(isset($_POST["submit"])){
         $dateFrom = $_POST["dateFrom"];
         $dateTo = $_POST["dateTo"];
-        $fromdate = date_create($dateFrom);
-        $todate = date_create($dateTo);
-        $no_of_days=date_diff($fromdate,$todate);
+        $from_date = date_create($dateFrom);
+        $to_date = date_create($dateTo);
+        $no_of_days=date_diff($from_date,$to_date);
         $no_of_days = intval($no_of_days->format("%a")) + 1; #integer conversion
     }
 ?>
@@ -31,7 +31,7 @@ if(!isset($_POST["submit"]))
 # Display after user submits 
 }else
 {
-    if($fromdate > $todate) #Invalid dates entered
+    if($from_date > $to_date) #Invalid dates entered
     {
 ?>
         <div class="alert alert-danger" role="alert">
@@ -61,7 +61,11 @@ if(!isset($_POST["submit"]))
         }
         else #Confirm Leaves
         {
+            $_SESSION["from_date"] = $dateFrom;
+            $_SESSION["to_date"] = $dateTo;
+            $_SESSION["no_of_days"] = $no_of_days;
 ?>
+
             <form action="process_leaves.php" method="post">
             <button type="submit" class="btn btn-dark" name="confirm">Confirm</button>
             </form>
