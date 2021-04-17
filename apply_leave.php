@@ -64,9 +64,14 @@ if(!isset($_POST["submit"]))
             $_SESSION["from_date"] = $dateFrom;
             $_SESSION["to_date"] = $dateTo;
             $_SESSION["no_of_days"] = $no_of_days;
+
 ?>
 
             <form action="process_leaves.php" method="post">
+            <div class="form-group">
+                <label for="comment">Enter comments to support your leave application [< 1000 words]</label>
+                <textarea maxlength="1000" class="form-control" id="comment" name="comment" rows="5"></textarea>
+            </div>
             <button type="submit" class="btn btn-dark" name="confirm">Confirm</button>
             </form>
 <?php
