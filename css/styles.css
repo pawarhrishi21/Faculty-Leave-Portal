@@ -1,12 +1,8 @@
 .footer{
-    background-color: dimgray;
+    background-color: #343a40;
     text-align: center;
-    color: white;
+    color: #f8f9fa;
     margin-top: 100%;
     margin-bottom: 0;
     height: 100px;
-}
-
-.error-message-login{
-    color:firebrick;
 }
