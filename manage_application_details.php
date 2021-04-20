@@ -1,22 +1,17 @@
-<?php include "static/header.php"?>
+<?php #UD
+include "static/header.php"?>
 
 <?php
-    $application_id = 0;
-    if(isset($_POST["comments"]))
-    {
-        $application_id = (int)$_POST["comments"];
-    }
-    else
-    {
-        header("Location: user.php");
-        exit;
-    }
-
-    // $query_to_get_comments = "SELECT getComments($application_id)";
-
-    // $result = pg_query($db_connection, $query_to_get_comments);
-    // $rows = pg_fetch_row($result);
-    // echo gettype($rows);
+    $application_id = 4; #TEST
+    // if(isset($_POST["comments"]))
+    // {
+    //     $application_id = (int)$_POST["comments"];
+    // }
+    // else
+    // {
+    //     header("Location: user.php");
+    //     exit;
+    // }
 
     $query_for_comments = "SELECT commentid,commentorid,commentorposition,appid,comment,timing from comments where appid = '$application_id' ";
 	$results = pg_query($db_connection,$query_for_comments);
@@ -51,31 +46,26 @@
   </div>
 </div>
 
-<?php
-    }
+<div class="container mt-5">
+  <form action="insert_comment.php" method="post">
+    <div class="form-group">
+        <label for="comment">Enter comment</label>
+        <textarea maxlength="1000" class="form-control" id="comment" name="comment" rows="5"></textarea>
+    </div>
+  <button type="submit" class="btn btn-dark mb-3" name="submit">Submit Comment</button>
+  </form>
 
-    if(status=="Applicant")
-    {
-
-        session_start();
-        $_SESSION["application_id"] = $application_id;
-        $_SESSION["commentor_position"] = $status;
-?>
-
-
-        <form action="add_comment.php" method="post">
-        <div class="form-group">
-            <label for="comment">Enter comment</label>
-            <textarea maxlength="1000" class="form-control" id="comment" name="comment" rows="5"></textarea>
-        </div>
-        <button type="submit" class="btn btn-dark" name="submit">Submit</button>
-        </form>
+  <form method="post" action="update_application.php">
+    <button type="button" class="btn btn-danger" name="submit" value="reject">Reject</button>
+    <button type="button" class="btn btn-primary" name="submit" value="return">Return back to the Applicant</button>
+    <button type="button" class="btn btn-success" name="submit" value="approve">Approve</button>
+  </form>
+</div>
 
 <?php
-
-
     }
 ?>
+
 
 
 <?php include "static/footer.php"?>

@@ -3,7 +3,7 @@
 <?php
 	session_start();
 	$id = $_SESSION["id"];
-    $query_for_view_application = "SELECT appid, status,startdate,enddate FROM applications WHERE applicantid='$id' order by timing";
+    $query_for_view_application = "SELECT applicantid,appid,status,startdate,enddate FROM applications WHERE status!='accepted' order by timing";
     $result = pg_query($db_connection, $query_for_view_application);
     $applications = pg_fetch_all($result);
 
@@ -15,6 +15,9 @@
         <div class="row">
             <div class="col">Application id</div>
             <div class="col"><?php echo $applications[$i]['appid'];?></div>
+            <div class="w-100"></div>
+            <div class="col">Applicant</div>
+            <div class="col"><?php echo strtoupper($applications[$i]['applicantid']);?></div>
             <div class="w-100"></div>
             <div class="col">Status</div>
             <div class="col"><?php echo $applications[$i]['status'];?></div>
