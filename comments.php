@@ -20,13 +20,22 @@
 
     $query_for_comments = "SELECT commentid,commentorid,commentorposition,appid,comment,timing from comments where appid = '$application_id' ";
 	$results = pg_query($db_connection,$query_for_comments);
-	while($comment = pg_fetch_row($results))
+
+    $query_to_get_application_status = "SELECT getApplicationStatus($application_id)";
+    $status = pg_fetch_row(pg_query($db_connection,$query_to_get_application_status))[0];
+?>
+<div class=jumbotron>
+    <h4>Status of Application : <strong><?php echo $status?></strong></h4>
+</div>
+
+<?php
+	while($comment_row = pg_fetch_row($results))
     {
-        $comment_id = $comment[0];
-        $commentor_id = strtoupper($comment[1]);
-        $commentor_position = $comment[2];
-        $comment = $comment[4];
-        $timing  = $comment[5];
+        $comment_id = $comment_row[0];
+        $commentor_id = strtoupper($comment_row[1]);
+        $commentor_position = $comment_row[2];
+        $comment_text = $comment_row[4];
+        $timing = $comment_row[5];
 ?>
 
 <div class="card w-75 mx-auto">
@@ -35,17 +44,36 @@
   </div>
   <div class="card-body">
     <h6 class="card-title">Name of commentor: <?php echo $commentor_id ?></h6>
-    <p class="card-text"><?php echo "$comment" ?></p>
+    <p class="card-text"><?php echo "$comment_text" ?></p>
   </div>
   <div class="card-footer text-muted">
-    <?php echo $timing ?>
+    Date: <?php echo (substr($timing,0,10))?> Time: <?php echo substr($timing,11,8)?>
   </div>
 </div>
 
+<?php
+    }
+
+    if(status=="Applicant")
+    {
+
+        session_start();
+        $_SESSION["application_id"] = $application_id;
+        $_SESSION["commentor_position"] = $status;
+?>
 
 
+        <form action="add_comment.php" method="post">
+        <div class="form-group">
+            <label for="comment">Enter comment</label>
+            <textarea maxlength="1000" class="form-control" id="comment" name="comment" rows="5"></textarea>
+        </div>
+        <button type="submit" class="btn btn-dark" name="submit">Submit</button>
+        </form>
 
 <?php
+
+
     }
 ?>
 
