@@ -8,7 +8,7 @@
     }
     elseif(isset($_GET["view"])) #if user clicked on View
     {
-        header("Location: view_applications.php");
+        header("Location: applications.php");
         exit;
     }
 

@@ -16,7 +16,7 @@ else{
     exit;
 }
 
-$query_to_create_application = "INSERT INTO applications(applicantid,status,startdate,enddate,time) VALUES ('$id','HOD','$from_date','$to_date',NOW())";
+$query_to_create_application = "INSERT INTO applications(applicantid,status,startdate,enddate,timing) VALUES ('$id','HOD','$from_date','$to_date',NOW())";
 
 $query_to_get_application_id = "SELECT appid FROM applications WHERE applicantid='$id' AND status='HOD' AND startdate='$from_date' AND enddate='$to_date' ORDER BY appid DESC";
 $result1 = pg_query($db_connection, $query_to_create_application);
@@ -27,13 +27,14 @@ if($result1){
     $application_id = $row[0];
 }
 
-$query_to_add_comment = "INSERT INTO comments(commentorid,appid,commentorposition,comment,time) VALUES ('$id','$application_id','Applicant','$comment',NOW())";
+$query_to_add_comment = "INSERT INTO comments(commentorid,appid,commentorposition,comment,timing) VALUES ('$id','$application_id','Applicant','$comment',NOW())";
 
 $result3 = pg_query($db_connection,$query_to_add_comment);
 
 ?>
     <div class="alert alert-success" role="alert">
-    Application has been submitted. Check the Applications section for status.
+    Application has been submitted. <a href="applications.php" class="alert-link">Click here to check the Applications section for status.</a>
+
     </div>
 
 <?php
