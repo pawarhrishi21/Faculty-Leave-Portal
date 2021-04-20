@@ -43,13 +43,13 @@
     </div>
 
     <div class="container mt-5 border border-dark p-4">
-        <h3 class="mb-4">Leave Application Section</h3>
-        <div class="btn-group-vertical" role="group">
+        <h3 class="mb-4">My Leave Applications</h3>
+        <div class="btn-group" role="group">
         <form action="user.php" method="get">
-        <button type="submit" class="btn btn-dark border border-white" name="view">View Previous Applications</button>
+        <button type="submit" class="btn btn-dark border border-white mx-auto" name="view">View Previous Applications</button>
         </form>
         <form action="user.php" method="get">
-        <button type="submit" class="btn btn-dark border border-white" name="apply">Initiate Leave Application
+        <button type="submit" class="btn btn-dark border border-white mx-auto" name="apply">Initiate Leave Application
         </div>
     </div>
 <?php

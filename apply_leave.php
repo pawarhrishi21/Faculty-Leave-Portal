@@ -18,15 +18,30 @@
 if(!isset($_POST["submit"]))
 {
 ?>
-<form name="Filter" method="POST" action="apply_leave.php">
-    From:
-    <input type="date" name="dateFrom" value="<?php echo date('Y-m-d'); ?>" />
-    <br/>
-    To:
-    <input type="date" name="dateTo" value="<?php echo date('Y-m-d'); ?>" />
-    <input type="submit" name="submit" value="Apply"/>
-</form>
+<div class="container mx-auto mt-5 border border-dark pb-5">
 
+    <div class="alert alert-dark" role="alert">
+    Fill the dates for the start and the end of leave days (Both inclusive).
+    </div>
+
+    <form name="Filter" method="POST" action="apply_leave.php">
+    
+        <div class="form-group col-md-6 mx-auto">
+            <label for="dateFrom">From</label>
+            <input class="form-control" id="dateFrom" type="date" name="dateFrom" value="<?php echo date('Y-m-d'); ?>" >
+        </div>
+
+        <div class="form-group col-md-6 mx-auto">
+            <label for="dateTo"> To   </label>
+            <input class="form-control" id="dateTo" type="date" name="dateTo" value="<?php echo date('Y-m-d'); ?>" >
+        </div>
+
+        <div class="text-center">
+            <button class="btn btn-dark" type="submit" name="submit" value="Apply"> Apply </button>
+        </div>
+    </form>
+
+</div>
 <?php
 # Display after user submits 
 }else
@@ -48,7 +63,11 @@ if(!isset($_POST["submit"]))
         $row = pg_fetch_row($result);
         $leaves_left = $row[0];
 ?>
-        <p>Leaves Left: <?php echo "$leaves_left"; ?></p>
+<div class="container border border-dark mt-5 px-5 pb-5">
+    <div class="alert alert-info">
+        <p>The number of leaves you have left : <?php echo "$leaves_left"; ?></p>
+    </div>
+
         <p>You are applying for a leave of <?php echo "$no_of_days"; ?> day(s)</p>
 <?php
         if($leaves_left < $no_of_days) #Not enough leaves
@@ -74,6 +93,9 @@ if(!isset($_POST["submit"]))
             </div>
             <button type="submit" class="btn btn-dark" name="confirm">Confirm</button>
             </form>
+
+</div>
+
 <?php
         }
     }
