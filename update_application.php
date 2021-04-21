@@ -1,30 +1,22 @@
 <?php #UD
 include "static/header.php";
 
-
-if(isset($_POST["submit"])){
-    $process = $_POST["submit"];
-}
-else{
+$process = "action_to_be_taken";
+if(!isset($_POST["submit"])){
     header("Location: user.php");
-    exit;
+    exit;  
 }
 
-if(process=="accept"){
-
+$process = $_POST["submit"];
+if($process=="accept"){
+    $query_to_accept_application = "SELECT updateApplicationStatus($application_id,'$position','accept')";
 }
-elseif(process=="reject"){
-
-
+elseif($process=="reject"){
+    $query_to_accept_application = "SELECT updateApplicationStatus($application_id,'$position','reject')";
 }
-elseif(process=="return"){
-
+elseif($process=="return"){
+    $query_to_accept_application = "SELECT updateApplicationStatus($application_id,'$position','return')";
 }
-
-
-
-
-
 
 
 ?>
