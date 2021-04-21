@@ -2,19 +2,13 @@
 include "static/header.php"?>
 
 <?php
-    $application_id = 4; #TEST
-    // if(isset($_POST["comments"]))
-    // {
-    //     $application_id = (int)$_POST["comments"];
-    // }
-    // else
-    // {
-    //     header("Location: user.php");
-    //     exit;
-    // }
+    if(isset($_POST['view']))
+    {
+      $application_id = $_POST['view'];
+    }
 
     $query_for_comments = "SELECT commentid,commentorid,commentorposition,appid,comment,timing from comments where appid = '$application_id' ";
-	$results = pg_query($db_connection,$query_for_comments);
+  	$results = pg_query($db_connection,$query_for_comments);
 
     $query_to_get_application_status = "SELECT getApplicationStatus($application_id)";
     $status = pg_fetch_row(pg_query($db_connection,$query_to_get_application_status))[0];
@@ -46,6 +40,10 @@ include "static/header.php"?>
   </div>
 </div>
 
+<?php
+    }
+?>
+
 <div class="container mt-5">
   <form action="insert_comment.php" method="post">
     <div class="form-group">
@@ -61,12 +59,6 @@ include "static/header.php"?>
     <button type="button" class="btn btn-success" name="submit" value="approve">Approve</button>
   </form>
 </div>
-
-<?php
-    }
-?>
-
-
 
 <?php include "static/footer.php"?>
 

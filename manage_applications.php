@@ -1,6 +1,13 @@
 <?php include("static/header.php"); ?>
 
 <?php
+
+    if(!isset($_POST["application"]))
+    {
+        header('Location: user.php');
+        exit;
+    }
+
 	session_start();
 	$id = $_SESSION["id"];
     $query_for_view_application = "SELECT applicantid,appid,status,startdate,enddate FROM applications WHERE status!='accepted' order by timing";
@@ -29,10 +36,8 @@
             <div class="col"><?php echo $applications[$i]['enddate'];?></div>
             <div class="w-100"></div>
             <div class="text-centre">
-            <form action="application_details.php" method="POST">
-
-            <button type="submit" name="comments" value="<?php echo $applicationid ?>" class="btn btn-dark mt-3 ml-2">View Application</button>
-
+            <form action="manage_application_details.php" method="POST">
+                <button type="submit" name="view" value="<?php echo $applicationid ?>" class="btn btn-dark mt-3 ml-2">View Application</button>
             </form>
             </div>
         </div>

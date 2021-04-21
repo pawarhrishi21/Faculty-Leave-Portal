@@ -66,11 +66,9 @@
             <div class="container mt-5 border border-dark p-4">
                 <h3 class="mb-4">Manage Faculty Applications</h3>
                 <div class="btn-group" role="group">
-                <form action="user.php" method="post">
-                <button type="submit" class="btn btn-dark border border-white mx-auto" name="view">View Applications</button>
-                </form>
-                <form action="user.php" method="post">
-                <button type="submit" class="btn btn-dark border border-white mx-auto" name="apply">Initiate Leave Application</button>
+                    <form action="manage_applications.php" method="post">
+                        <button type="submit" class="btn btn-dark border border-white mx-auto" name="application" value="view">View Applications</button>
+                    </form>
                 </div>
             </div>
 <?php
@@ -83,8 +81,9 @@
 ?>
             <div class="container mt-5 border border-dark p-4">
                 <h3 class="mb-4">Faculty Role Management</h3>
-                <form action="manage_roles.php" method="post">
-                <button type="submit" class="btn btn-dark border border-white mx-auto" name="apply">Initiate Leave Application</button>
+                <form action="manage_positions.php" method="post">
+                  <button type="submit" class="btn btn-dark border border-white mx-auto" name="update-position">Faculty Position Management</button>
+                </form>
             </div>
 <?php
         }

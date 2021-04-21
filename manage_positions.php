@@ -1,11 +1,11 @@
 <?php include "static/header.php"?>
 
-<?php            
-    $query_to_fetch_dept_faculties = "select * from facultiesFromDept('Mechanical')";
-    $dept_faculties = pg_query($db_connection,$query_to_fetch_dept_faculties);
-
-    $query_to_fetch_position_holders = "select * from facultyAtPosition('Dean AA')";
-    $faculty_at_position = pg_fetch_row(pg_query($db_connection, $query_to_fetch_position_holders));
+<?php           
+    if(!isset($_POST['update-position']))
+    {
+        header("Location: user.php");
+        exit;
+    }
     
     $query_to_fetch_all_faculties = "select * from allFaculties()";
 ?>
@@ -25,7 +25,9 @@
                 <?php
                 while($row=pg_fetch_row($all_faculties))
                 {?>
-                        <button class="dropdown-item" type="button" name="Dean AA" value="<?php echo $row[0]?>"><?php echo $row[1] ?></button>
+                    <form action="process_position_update.php" method="post">
+                        <button class="dropdown-item" type="submit" name="Dean AA" value="<?php echo $row[0]?>"><?php echo $row[1] ?></button>
+                    </form>
                 <?php
                 }?>              
             </div>
@@ -46,7 +48,9 @@ $faculty_at_position = pg_fetch_row(pg_query($db_connection, $query_to_fetch_pos
                 $all_faculties = pg_query($db_connection,$query_to_fetch_all_faculties);
                 while($row=pg_fetch_row($all_faculties))
                 {?>
-                        <button class="dropdown-item" type="button" name="Dean AA" value="<?php echo $row[0]?>"><?php echo $row[1] ?></button>
+                    <form action="process_position_update.php" method="post">
+                        <button class="dropdown-item" type="submit" name="Dean FA" value="<?php echo $row[0]?>"><?php echo $row[1] ?></button>
+                    </form>
                 <?php
                 }?>   
             </div>
@@ -67,7 +71,9 @@ $faculty_at_position = pg_fetch_row(pg_query($db_connection, $query_to_fetch_pos
                 $all_faculties = pg_query($db_connection,$query_to_fetch_all_faculties);
                 while($row=pg_fetch_row($all_faculties))
                 {?>
-                        <button class="dropdown-item" type="button" name="Dean AA" value="<?php echo $row[0]?>"><?php echo $row[1] ?></button>
+                    <form action="process_position_update.php" method="post">
+                        <button class="dropdown-item" type="submit" name="Dean R" value="<?php echo $row[0]?>"><?php echo $row[1] ?></button>
+                    </form>
                 <?php
                 }?>   
             </div>
@@ -88,7 +94,9 @@ $faculty_at_position = pg_fetch_row(pg_query($db_connection, $query_to_fetch_pos
                 $all_faculties = pg_query($db_connection,$query_to_fetch_all_faculties);
                 while($row=pg_fetch_row($all_faculties))
                 {?>
-                        <button class="dropdown-item" type="button" name="Dean AA" value="<?php echo $row[0]?>"><?php echo $row[1] ?></button>
+                    <form action="process_position_update.php" method="post">
+                        <button class="dropdown-item" type="submit" name="Dean SA" value="<?php echo $row[0]?>"><?php echo $row[1] ?></button>
+                    </form>
                 <?php
                 }?>   
             </div>
@@ -110,9 +118,11 @@ $faculty_at_position = pg_fetch_row(pg_query($db_connection, $query_to_fetch_pos
                 $all_faculties = pg_query($db_connection,$query_to_fetch_all_faculties);
                 while($row=pg_fetch_row($dept_faculties))
                 {?>
-                        <button class="dropdown-item" type="button" name="HOD CSE" value="<?php echo $row[0]?>"><?php echo $row[1] ?></button>
+                    <form action="process_position_update.php" method="post">
+                        <button class="dropdown-item" type="submit" name="HOD CSE" value="<?php echo $row[0]?>"><?php echo $row[1] ?></button>
+                    </form>
                 <?php
-                }?>  
+                }?>
             </div>
         </div>
     </div>
@@ -132,7 +142,9 @@ $faculty_at_position = pg_fetch_row(pg_query($db_connection, $query_to_fetch_pos
                 $all_faculties = pg_query($db_connection,$query_to_fetch_all_faculties);
                 while($row=pg_fetch_row($dept_faculties))
                 {?>
-                        <button class="dropdown-item" type="button" name="HOD CSE" value="<?php echo $row[0]?>"><?php echo $row[1] ?></button>
+                    <form action="process_position_update.php" method="post">
+                        <button class="dropdown-item" type="submit" name="HOD EE" value="<?php echo $row[0]?>"><?php echo $row[1] ?></button>
+                    </form>
                 <?php
                 }?>  
             </div>
@@ -155,7 +167,9 @@ $faculty_at_position = pg_fetch_row(pg_query($db_connection, $query_to_fetch_pos
                 $all_faculties = pg_query($db_connection,$query_to_fetch_all_faculties);
                 while($row=pg_fetch_row($dept_faculties))
                 {?>
-                        <button class="dropdown-item" type="button" name="HOD CSE" value="<?php echo $row[0]?>"><?php echo $row[1] ?></button>
+                    <form action="process_position_update.php" method="post">
+                        <button class="dropdown-item" type="submit" name="HOD ME" value="<?php echo $row[0]?>"><?php echo $row[1] ?></button>
+                    </form>
                 <?php
                 }?>  
             </div>
@@ -164,8 +178,5 @@ $faculty_at_position = pg_fetch_row(pg_query($db_connection, $query_to_fetch_pos
 
 </div>
 <?php include "static/footer.php"?>
-
-
-
 
 
