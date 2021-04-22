@@ -3,7 +3,7 @@
 <?php
 	session_start();
 	$id = $_SESSION["id"];
-    $query_for_view_application = "SELECT appid, status,startdate,enddate FROM applications WHERE applicantid='$id' order by timing";
+    $query_for_view_application = "SELECT appid, status,startdate,enddate,isretrospective FROM applications WHERE applicantid='$id' order by timing";
     $result = pg_query($db_connection, $query_for_view_application);
     $applications = pg_fetch_all($result);
 
@@ -25,6 +25,12 @@
             <div class="col">Leave end date</div>
             <div class="col"><?php echo $applications[$i]['enddate'];?></div>
             <div class="w-100"></div>
+<?php if($applications[$i]['isretrospective'] == 1){ ?>
+            <div class="col"><strong>NOTE : Retrospective Leaves</strong></div>
+            <div class="col"></div>
+            <div class="w-100"></div>
+<?php } ?>
+
             <div class="text-centre">
             <form action="application_details.php" method="POST">
 

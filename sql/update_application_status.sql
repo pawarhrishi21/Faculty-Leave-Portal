@@ -10,12 +10,27 @@ AS $$
 
 DECLARE
 new_status VARCHAR;
+retrosp INTEGER;
 
 BEGIN
-if type_of_update='accept' then
-	if position_of_updater='HOD' then
+
+SELECT isretrospective
+INTO retrosp
+FROM applications
+WHERE appid=application_id;
+
+if type_of_update='approve' then
+	if position_of_updater='Faculty' then
+		new_status='HOD';
+	elsif position_of_updater='HOD' then
 		new_status='Dean FA';
-	elsif position_of_updater='Dean FA' or position_of_updater='Director' then
+	elsif position_of_updater='Dean FA' then
+		if retrosp=1 then
+			new_status='Director';
+		else
+			new_status='Approved';
+		end if;
+	elsif position_of_updater='Director' then
 		new_status:='Approved';
 	end if;
 	

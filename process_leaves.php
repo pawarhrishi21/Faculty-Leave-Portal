@@ -10,13 +10,14 @@ if(isset($_POST["confirm"])){
     $to_date = $_SESSION["to_date"];
     $id = $_SESSION["id"];
     $no_of_days = $_SESSION["no_of_days"];
+    $retrospective = $_SESSION["retrospective"];
 }
 else{
     header("Location: apply_leave.php");
     exit;
 }
 
-$query_to_create_application = "INSERT INTO applications(applicantid,status,startdate,enddate,timing) VALUES ('$id','HOD','$from_date','$to_date',NOW())";
+$query_to_create_application = "INSERT INTO applications(applicantid,status,startdate,enddate,timing,isretrospective) VALUES ('$id','HOD','$from_date','$to_date',NOW(),$retrospective)";
 
 $query_to_get_application_id = "SELECT appid FROM applications WHERE applicantid='$id' AND status='HOD' AND startdate='$from_date' AND enddate='$to_date' ORDER BY appid DESC";
 $result1 = pg_query($db_connection, $query_to_create_application);

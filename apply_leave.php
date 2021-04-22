@@ -1,5 +1,6 @@
 <?php
 // Post request after selecting leave dates
+    $retrospective = 0;
     if(isset($_POST["submit"])){
         $dateFrom = $_POST["dateFrom"];
         $dateTo = $_POST["dateTo"];
@@ -7,6 +8,16 @@
         $to_date = date_create($dateTo);
         $no_of_days=date_diff($from_date,$to_date);
         $no_of_days = intval($no_of_days->format("%a")) + 1; #integer conversion
+
+        $current_date = date("Y-m-d");
+        if($current_date < $dateFrom)
+        {
+            $retrospective = 0;
+        }
+        else
+        {
+            $retrospective = 1;
+        }
     }
 ?>
 
@@ -62,11 +73,14 @@ if(!isset($_POST["submit"]))
         $result = pg_query($db_connection, $query);
         $row = pg_fetch_row($result);
         $leaves_left = $row[0];
+
 ?>
 <div class="container border border-dark mt-5 px-5 pb-5">
     <div class="alert alert-info">
-        <p>The number of leaves you have left : <?php echo "$leaves_left"; ?></p>
+        <p>The number of leaves you have left : <?php echo "$leaves_left"; ?> <?php if($retrospective == 1){echo "<p>NOTE: THIS IS A RETROSPECTIVE LEAVE.</p>";}?>
+</p>
     </div>
+
 
         <p>You are applying for a leave of <?php echo "$no_of_days"; ?> day(s)</p>
 <?php
@@ -83,7 +97,7 @@ if(!isset($_POST["submit"]))
             $_SESSION["from_date"] = $dateFrom;
             $_SESSION["to_date"] = $dateTo;
             $_SESSION["no_of_days"] = $no_of_days;
-
+            $_SESSION["retrospective"] = $retrospective;
 ?>
 
             <form action="process_leaves.php" method="post">

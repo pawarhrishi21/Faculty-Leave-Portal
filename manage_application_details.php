@@ -6,7 +6,14 @@ include "static/header.php"?>
     {
       $application_id = $_POST['view'];
     }
-
+    else{
+      header('Location: manage_applications.php');
+    }
+    
+    session_start();
+    $id = $_SESSION["id"];
+    $user_position = $_SESSION["user_position"];
+    $_SESSION["application_id"] = $application_id;
     $query_for_comments = "SELECT commentid,commentorid,commentorposition,appid,comment,timing from comments where appid = '$application_id' ";
   	$results = pg_query($db_connection,$query_for_comments);
 
@@ -42,23 +49,27 @@ include "static/header.php"?>
 
 <?php
     }
+
+ if($status == $user_position)
+ {
+
 ?>
 
-<div class="container mt-5">
-  <form action="insert_comment.php" method="post">
-    <div class="form-group">
-        <label for="comment">Enter comment</label>
-        <textarea maxlength="1000" class="form-control" id="comment" name="comment" rows="5"></textarea>
-    </div>
-  <button type="submit" class="btn btn-dark mb-3" name="submit">Submit Comment</button>
-  </form>
+  <div class="container mt-5">
+    <form action="update_application.php" method="post">
+      <div class="form-group">
+          <label for="comment">Enter comment</label>
+          <textarea maxlength="1000" class="form-control" id="comment" name="comment" rows="5"></textarea>
+      </div>
 
-  <form method="post" action="update_application.php">
-    <button type="button" class="btn btn-danger" name="submit" value="reject">Reject</button>
-    <button type="button" class="btn btn-primary" name="submit" value="return">Return back to the Applicant</button>
-    <button type="button" class="btn btn-success" name="submit" value="approve">Approve</button>
-  </form>
-</div>
+      <button type="submit" class="btn btn-danger" name="submit" value="reject">Reject the Application</button>
+      <button type="submit" class="btn btn-primary" name="submit" value="return">Return back to the Applicant</button>
+      <button type="submit" class="btn btn-success" name="submit" value="approve">Approve the Application</button>
+    </form>
+  </div>
+
+<?php
+ } ?>
 
 <?php include "static/footer.php"?>
 

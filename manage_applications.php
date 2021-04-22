@@ -10,9 +10,21 @@
 
 	session_start();
 	$id = $_SESSION["id"];
-    $query_for_view_application = "SELECT applicantid,appid,status,startdate,enddate FROM applications WHERE status!='accepted' order by timing";
+    $user_position = $_SESSION["user_position"];
+    $user_dept = $_SESSION["user_dept"];
+
+    $query_for_view_application = "SELECT * from viewApplicationsToManage('$user_position','$user_dept');";
     $result = pg_query($db_connection, $query_for_view_application);
     $applications = pg_fetch_all($result);
+
+    if(count($applications) == 0)
+    {
+?>
+        <div class="jumbotron">
+        <h3>No applications at the desk</h3>
+        </div>
+<?php        
+    }
 
     for($i=0;$i<count($applications);$i++)
     {
@@ -35,6 +47,13 @@
             <div class="col">Leave end date</div>
             <div class="col"><?php echo $applications[$i]['enddate'];?></div>
             <div class="w-100"></div>
+
+        <?php if($applications[$i]['isretrospective'] == 1){ ?>
+            <div class="col"><strong>NOTE : Retrospective Leaves</strong></div>
+            <div class="col"></div>
+            <div class="w-100"></div>
+        <?php } ?>
+
             <div class="text-centre">
             <form action="manage_application_details.php" method="POST">
                 <button type="submit" name="view" value="<?php echo $applicationid ?>" class="btn btn-dark mt-3 ml-2">View Application</button>

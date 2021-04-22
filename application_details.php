@@ -1,4 +1,5 @@
-<?php include "static/header.php"?>
+<?php session_start(); #
+include "static/header.php"?>
 
 <?php
     $application_id = 4; #TEST
@@ -48,22 +49,21 @@
 <?php
     }
     
-    if($status=="Applicant")
+    if($status=='Returned by HOD' || $status=='Returned by Dean FA' || $status=='Returned by Director')
     {
 
-        session_start();
         $_SESSION["application_id"] = $application_id;
-        $_SESSION["commentor_position"] = $status;
+        $_SESSION["status_of_application"] = $status;
 ?>
-
-
-        <form action="insert_comment.php" method="post">
-        <div class="form-group">
-            <label for="comment">Enter comment</label>
-            <textarea maxlength="1000" class="form-control" id="comment" name="comment" rows="5"></textarea>
+        <div class="container mt-4">
+            <form action="insert_comment.php" method="post">
+            <div class="form-group">
+                <label for="comment">Enter comment</label>
+                <textarea maxlength="1000" class="form-control" id="comment" name="comment" rows="5"></textarea>
+            </div>
+            <button type="submit" class="btn btn-dark" name="submit">Submit</button>
+            </form>      
         </div>
-        <button type="submit" class="btn btn-dark" name="submit">Submit</button>
-        </form>
 
 <?php
 
