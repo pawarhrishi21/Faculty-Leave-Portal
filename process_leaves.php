@@ -17,9 +17,20 @@ else{
     exit;
 }
 
-$query_to_create_application = "INSERT INTO applications(applicantid,status,startdate,enddate,timing,isretrospective) VALUES ('$id','HOD','$from_date','$to_date',NOW(),$retrospective)";
+$user_position = $_SESSION["user_position"];
 
-$query_to_get_application_id = "SELECT appid FROM applications WHERE applicantid='$id' AND status='HOD' AND startdate='$from_date' AND enddate='$to_date' ORDER BY appid DESC";
+if($user_position == 'Faculty')
+{
+    $to_be_status = 'HOD';
+}
+else
+{
+    $to_be_status = 'Director';
+}
+
+$query_to_create_application = "INSERT INTO applications(applicantid,status,startdate,enddate,timing,isretrospective) VALUES ('$id','$to_be_status','$from_date','$to_date',NOW(),$retrospective)";
+
+$query_to_get_application_id = "SELECT appid FROM applications WHERE applicantid='$id' AND status='$to_be_status' AND startdate='$from_date' AND enddate='$to_date' ORDER BY appid DESC";
 $result1 = pg_query($db_connection, $query_to_create_application);
 
 if($result1){

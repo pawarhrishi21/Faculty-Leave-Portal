@@ -25,9 +25,22 @@
 
 
 <?php 
+
+session_start();
+$user_id = $_SESSION["id"];
+
 # Display before clicking Submit
 if(!isset($_POST["submit"]))
 {
+    $query_to_know_active_applications = "SELECT * from applications where applicantid='$user_id' and status!='Approved' and status!='Rejected'";
+    $active_applications = pg_fetch_all(pg_query($db_connection,$query_to_know_active_applications));
+
+    if(count($active_applications) > 0)
+    {
+        header('Location: message_cannot_apply.php');
+        exit;
+    }
+
 ?>
 <div class="container mx-auto mt-5 border border-dark pb-5">
 
@@ -67,7 +80,6 @@ if(!isset($_POST["submit"]))
     }
     else{
         #SESSION to access userid
-        session_start();
         $id = $_SESSION['id'];
         $query = "SELECT leaves FROM leaves WHERE userid='$id'";
         $result = pg_query($db_connection, $query);

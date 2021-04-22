@@ -4,7 +4,9 @@ CREATE OR REPLACE FUNCTION deductLeaves()
 	AS $$
 	
 	#variable_conflict use_column
-	DECLARE leaves_left INTEGER;
+	DECLARE 
+	leaves_left INTEGER;
+	leaves_taken INTEGER;
 	
 	BEGIN
 	
@@ -14,7 +16,7 @@ CREATE OR REPLACE FUNCTION deductLeaves()
 	WHERE userid=NEW.applicantid;
 	
 	UPDATE leaves 
-	SET leaves=(leaves_left-1) 
+	SET leaves=leaves_left-((OLD.enddate - OLD.startdate)::INTEGER) - 1
 	WHERE userid=NEW.applicantid;
 	
 	RETURN NEW;
