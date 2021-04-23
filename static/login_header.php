@@ -26,10 +26,10 @@ $db_connection = pg_connect("host=localhost dbname=faculty-portal user=postgres 
     <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarText">
-    <ul class="navbar-nav mr-auto">
+    <!-- <ul class="navbar-nav mr-auto">
         <li class="nav-item active">
             <a class="nav-link" href="user.php">Home </a>
-        </li>
+        </li> -->
     </ul> 
     <!-- <span class="navbar-text">
     </span> -->

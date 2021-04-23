@@ -1,4 +1,4 @@
-<?php include "static/header.php"?>
+<?php include "static/login_header.php"?>
 
 <?php
 
