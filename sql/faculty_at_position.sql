@@ -1,3 +1,5 @@
+-- Fetch the userid and name for faculty holding a special position
+
 CREATE OR REPLACE FUNCTION facultyAtPosition(	
 	IN position_of_faculty VARCHAR,
 	OUT faculty_userid VARCHAR,

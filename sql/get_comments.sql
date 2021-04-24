@@ -1,3 +1,5 @@
+-- Get all comments made on a particular leave application
+
 CREATE OR REPLACE FUNCTION getComments(
 IN application_id INTEGER
 ) RETURNS

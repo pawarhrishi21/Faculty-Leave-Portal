@@ -1,4 +1,5 @@
--- To get al faculties not holding any special position
+-- To get all faculties not holding any special position
+
 CREATE OR REPLACE FUNCTION allFaculties()
 RETURNS TABLE(
 	userid VARCHAR,

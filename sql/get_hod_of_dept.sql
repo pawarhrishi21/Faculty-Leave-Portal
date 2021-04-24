@@ -1,3 +1,5 @@
+-- Get the userID and name rof the Head of a particular department
+
 CREATE OR REPLACE FUNCTION hodAt(
 	IN dept_name VARCHAR,
 	OUT hod_userid VARCHAR,

@@ -1,4 +1,5 @@
---To get faculties currently not holding any special position
+--To get faculties currently not holding any special position from a particular department
+
 CREATE OR REPLACE FUNCTION facultiesFromDept(	
 	IN department_name VARCHAR
 )

@@ -6,6 +6,8 @@ CREATE TABLE applicationrecord(
 	timing TIMESTAMP
 );
 
+-- Trigger to update the All time record of applications when an application gets approved or rejected.
+
 CREATE OR REPLACE FUNCTION updateapplicationrecord()
 
 	RETURNS TRIGGER AS $$

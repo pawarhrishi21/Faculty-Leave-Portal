@@ -1,3 +1,5 @@
+-- Stored Procedure to append comment to a leave application.
+
 CREATE OR REPLACE FUNCTION insertComment(	
 	IN application_id INTEGER,
 	IN commentor_id VARCHAR,

@@ -1,3 +1,5 @@
+-- Get status of a leave application
+
 CREATE OR REPLACE FUNCTION getApplicationStatus(
 IN application_id INTEGER
 ) RETURNS
