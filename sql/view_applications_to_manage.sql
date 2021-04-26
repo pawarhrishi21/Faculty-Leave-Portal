@@ -1,3 +1,5 @@
+-- Fetch applications to manage depending on the level of authority
+
 DROP FUNCTION viewapplicationstomanage(character varying,character varying);
 CREATE OR REPLACE FUNCTION viewApplicationsToManage(	
 	IN user_position VARCHAR,

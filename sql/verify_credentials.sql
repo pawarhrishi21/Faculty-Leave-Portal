@@ -1,3 +1,4 @@
+-- Procedure to verify login credentials of a user
 CREATE OR REPLACE FUNCTION verifyCredentials(
     IN entereduserid VARCHAR,
     IN enteredpassword varchar

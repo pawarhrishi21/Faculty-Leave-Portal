@@ -1,3 +1,5 @@
+-- Updates the applicationn status upon approval or rejection by an authority
+
 CREATE OR REPLACE FUNCTION updateApplicationStatus(	
 	IN application_id INTEGER,
 	IN position_of_updater VARCHAR,
