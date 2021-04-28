@@ -1,7 +1,16 @@
 <?php include "static/header.php"?>
+<?php
+// Temporary section for mongo conn
+require 'vendor/autoload.php';
 
-<!-- Temporary section for mongo conn -->
+$client = new MongoDB\Client("mongodb://localhost:27017");
+$collection = $client->facultyProfileDB->profile;
 
+$document = $collection->findOne(['userid' => 'abhinav']);
+
+echo $document['Researches'][0]["Title"];
+
+?>
 
 <div class="mt-3 ml-3">
     <img id="profile-pic" src="img/profile_picture.jfif" alt="Profile Picture">
@@ -40,4 +49,11 @@
 
 
 
-<?php include "static/footer.php" ?>
+<?php 
+
+// $updateResult = $collection->updateOne(
+//     ['userid' => 'abhinav'],
+//     ['$set' => ['$dsadas' => 'us']]
+// );
+
+include "static/footer.php" ?>
