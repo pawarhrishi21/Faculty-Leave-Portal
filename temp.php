@@ -7,9 +7,11 @@ $collection = $client->facultyProfileDB->profile;
 
 $profile_data1 = [
     "userid" => "abhinav",
+    "Name" => "Dr. Abhinav Dhall",
     "Email" => "abhinav@email.com",
     "Position" => "Faculty",
     "Department" => "Computer Science",
+    "ResearchInterests" => "Deep learning, Computer Vision, AI",
     "Academics" => [
         [
             "Title" => "Btech, Computer Science, ",
@@ -23,7 +25,8 @@ $profile_data1 = [
         ]
     ],
     "Biography" => "I am a Lecturer at the Faculty of Information Technology and I co-direct the Human-Centred Artificial Intelligence lab in the Department of Human Centered Computing. 
-    My research area is mainly in the broad domain of automatic human behaviour understanding.",
+
+    My research area is mainly in the broad domain of automatic human behaviour understanding. I moved to Australia from Indian Institute of Technology Ropar, where I lead the Learning Affect & Semantic Image Analysis group. I pursued research at the University of Waterloo and the University of Canberra after receiving PhD from the Australian National University. During the course of my PhD journey, I was a visiting scholar at the University of California San Diego and the Imperial College London.",
     "Researches" =>[
         [
             "Title" => "A survey on automatic multimodal emotion recognition in the wild",
@@ -34,7 +37,7 @@ $profile_data1 = [
             "Title" => "Automatic prediction of group cohesiveness in images",
             "Description" => "Ghosh, S., Dhall, A., Sebe, N. & Gedeon, T., 23 Sep 2020, (Accepted/In press) In : IEEE Transactions on Affective Computing. 13 p",
             "Link" => "https://research.monash.edu/en/publications/automatic-prediction-of-group-cohesiveness-in-images" 
-        ],
+        ]
     ],
     "Achievements" =>[
         [
@@ -48,13 +51,13 @@ $profile_data1 = [
             "Description" => "Dhall, Abhinav (Recipient), 2018
             Prize: Prize (including medals and awards)",
             "Link" => "https://research.monash.edu/en/publications/automatic-prediction-of-group-cohesiveness-in-images" 
-        ],
+        ]
     ],
     "CoursesTaught" => ["CS901 - Image Processing in May-Dec 2018", "CS802 - Computer Vision in Feb-May 2019"]
 ];
 
-$result = $collection->insertOne($profile_data1);
-echo "Inserted with Object ID '{$result->getInsertedId()}'";
+ $result = $collection->insertOne($profile_data1);
+ echo "Inserted with Object ID '{$result->getInsertedId()}'";
 
 $document = $collection->findOne(['userid' => 'abhinav']);
 
