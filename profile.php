@@ -33,7 +33,11 @@ $_SESSION['id'] = $document['userid'];
         <div class="col">Research Interests</div>
         <div class="col"><?php echo $document['ResearchInterests'] ?></div>
     </div>
+    <form action="update_info.php" method="post">
+        <button class="btn btn-primary mt-2" type="submit" name="edit">Edit Info</button>
+    </form>
 </div>
+
 
 
 
@@ -43,7 +47,7 @@ $_SESSION['id'] = $document['userid'];
         <p><?php echo $document['Biography'] ?></p>
     <!-- </div> -->
     <form action="update_bio.php" method="post">
-        <button class="btn btn-dark" type="submit" >Edit</button>
+        <button class="btn btn-dark" type="submit" >Edit Bio</button>
     </form>
 </div>
 
@@ -57,8 +61,8 @@ $_SESSION['id'] = $document['userid'];
     <?php        
         }
     ?>
-    <form action="add_tdl.php" method="post">
-        <button class="btn btn-dark" type="submit" name="add" value="publication" >Add Publication</button>
+    <form action="insert_tdl.php" method="post">
+        <button class="btn btn-dark" type="submit" name="add" value="Researches" >Add Publication</button>
     </form>
 </div>
 
@@ -72,8 +76,8 @@ $_SESSION['id'] = $document['userid'];
     <?php        
         }
     ?>
-    <form action="add_tdl.php" method="post">
-        <button class="btn btn-dark" type="submit" name="add" value="achievement" >Add Achievement</button>
+    <form action="insert_tdl.php" method="post">
+        <button class="btn btn-dark" type="submit" name="add" value="Achievements" >Add Achievement</button>
     </form>
 </div>
 
@@ -104,10 +108,5 @@ $_SESSION['id'] = $document['userid'];
 
 
 <?php 
-
-// $updateResult = $collection->updateOne(
-//     ['userid' => 'abhinav'],
-//     ['$set' => ['$dsadas' => 'us']]
-// );
 
 include "static/footer.php" ?>

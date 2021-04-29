@@ -10,33 +10,54 @@ if(isset($_POST["confirm"])){
     //update DB
     // $user_id = $_SESSION['id'];
     $user_id = 'abhinav';
+
+    $tdl_to_insert = [
+        "Title" => $_POST["title"],
+        "Description" => $_POST["description"],
+        "Link" => $_POST["link"]
+    ];
+    
+    $to_update = $_POST["confirm"];
+
     $updateResult = $collection->updateOne(
         ['userid' => 'abhinav'],
-        ['$set' => ['Biography' => $updated_bio]]
+        ['$push' => [$to_update => $tdl_to_insert]]
     );
+    header('Location: profile.php');
 }
 
 if(!isset($_POST["add"])){
     header('Location: profile.php');
 }
+
 $to_update = $_POST["add"];
 
 //$user_id = $_SESSION["id"];
 $user_id = 'abhinav';
 
 ?>
+<div class="jumbotron">
+    <h4><?php echo "Insert ".$to_update ?></h4>
+</div>
 
-<form class="mx-auto mt-5 border border-dark py-5" action="add_tdl.php" method="POST" style="width:700px">
-    <div class="form-group col-md-6 mx-auto">
+<form class="mx-auto mt-5 border border-dark py-5" action="insert_tdl.php" method="POST" style="width:700px">
+    <div class="form-group col-md-8 mx-auto">
         <label for="title">Title</label>
         <textarea maxlength="1000" class="form-control" id="title" name="title" rows="2"></textarea>
     </div>
 
-    <div class="form-group col-md-6 mx-auto">
+    <div class="form-group col-md-8 mx-auto">
         <label for="description">Description</label>
         <textarea maxlength="1000" class="form-control" id="description" name="description" rows="5"></textarea>
     </div>
+
+    <div class="form-group col-md-8 mx-auto">
+        <label for="link">Link</label>
+        <textarea maxlength="1000" class="form-control" id="link" name="link" rows="1"></textarea>
+    </div>
     <div class="text-center">
-        <button class="btn btn-dark" name="confirm" type="submit" value="<?php echo $to_update ?>">Login</button>
+        <button class="btn btn-dark" name="confirm" type="submit" value="<?php echo $to_update ?>">Confirm</button>
     </div>
 </form>
+
+<?php include "static/footer.php"?>
