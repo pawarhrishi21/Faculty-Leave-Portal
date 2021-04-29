@@ -1,13 +1,14 @@
 <?php include "static/header.php"?>
 <?php
-
 require 'vendor/autoload.php';
 
 $client = new MongoDB\Client("mongodb://localhost:27017");
 $collection = $client->facultyProfileDB->profile;
-
 session_start();
-$_SESSION['id'] = $document['userid'];
+$user_id = $_SESSION['id'];
+
+$document = $collection->findOne(['userid' => $user_id]);
+
 ?>
 
 <div class="mt-3 ml-3">
@@ -55,7 +56,10 @@ $_SESSION['id'] = $document['userid'];
         foreach ($document["Researches"] as $research) {
     ?>
         <h5><a href=<?php echo $research["Link"]; ?>><?php echo $research["Title"]; ?></a></h5>
-        <p><?php echo $research["Description"]; ?></p>
+        <p style="display:inline;"><?php echo $research["Description"]; ?></p>
+        <form action="delete_tdl.php" method="post">
+            <button class="btn btn-outline-danger btn-sm mb-2" type="submit" name="Researches" value="<?php echo $research['Title'] ?>">X</button>
+        </form>
     <?php        
         }
     ?>
@@ -70,7 +74,10 @@ $_SESSION['id'] = $document['userid'];
         foreach ($document["Achievements"] as $achievement) {
     ?>
         <h5><a href=<?php echo $achievement["Link"]; ?>><?php echo $achievement["Title"]; ?></a></h5>
-        <p><?php echo $achievement["Description"]; ?></p>
+        <p style="display:inline;"><?php echo $achievement["Description"]; ?></p>
+        <form action="delete_tdl.php" method="post">
+            <button class="btn btn-outline-danger btn-sm mb-2" type="submit" name="Achievements" value="<?php echo $achievement['Title'] ?>">X</button>
+        </form>
     <?php        
         }
     ?>
@@ -85,6 +92,10 @@ $_SESSION['id'] = $document['userid'];
         foreach ($document["CoursesTaught"] as $course) {
     ?>
         <li><?php echo $course; ?></li>
+            <form action="delete_li.php" method="post">
+                <button class="btn btn-outline-danger btn-sm mb-2" type="submit" name="CoursesTaught" value="<?php echo $course ?>">X</button>
+            </form>
+        
     <?php        
         }
     ?>
@@ -101,7 +112,10 @@ $_SESSION['id'] = $document['userid'];
         foreach ($document["Academics"] as $academic) {
     ?>
         <h6><?php echo $academic["Title"]; ?></a></h6>
-        <p><?php echo $academic["Description"].", "; ?> <?php echo $academic["Date"]; ?></p>
+        <p style="display:inline;"><?php echo $academic["Description"].", "; ?> <?php echo $academic["Date"]; ?></p>
+        <form action="delete_tdd.php" method="post">
+            <button class="btn btn-outline-danger btn-sm mb-2" type="submit" name="Academics" value="<?php echo $academic['Title'] ?>">X</button>
+        </form>
     <?php        
         }
     ?>
@@ -112,6 +126,4 @@ $_SESSION['id'] = $document['userid'];
 </div>
 
 
-<?php 
-
-include "static/footer.php" ?>
+<?php include "static/footer.php" ?>
