@@ -9,18 +9,13 @@ session_start();
 if(isset($_POST["confirm"])){
     //update DB
     $user_id = $_SESSION['id'];
-
-    $tdl_to_insert = [
-        "Title" => $_POST["title"],
-        "Description" => $_POST["description"],
-        "Link" => $_POST["link"]
-    ];
     
     $to_update = $_POST["confirm"];
-
+    $li_to_insert = $_POST["course"];
+    
     $updateResult = $collection->updateOne(
         ['userid' => $user_id],
-        ['$push' => [$to_update => $tdl_to_insert]]
+        ['$push' => [$to_update => $li_to_insert]]
     );
     header('Location: profile.php');
 }
@@ -38,20 +33,10 @@ $user_id = $_SESSION["id"];
     <h4><?php echo "Insert ".$to_update ?></h4>
 </div>
 
-<form class="mx-auto mt-5 border border-dark py-5" action="insert_tdl.php" method="POST" style="width:700px">
+<form class="mx-auto mt-5 border border-dark py-5" action="insert_li.php" method="POST" style="width:700px">
     <div class="form-group col-md-8 mx-auto">
-        <label for="title">Title</label>
-        <textarea maxlength="1000" class="form-control" id="title" name="title" rows="2"></textarea>
-    </div>
-
-    <div class="form-group col-md-8 mx-auto">
-        <label for="description">Description</label>
-        <textarea maxlength="1000" class="form-control" id="description" name="description" rows="5"></textarea>
-    </div>
-
-    <div class="form-group col-md-8 mx-auto">
-        <label for="link">Link</label>
-        <textarea maxlength="1000" class="form-control" id="link" name="link" rows="1"></textarea>
+        <label for="course">Course Details</label>
+        <textarea maxlength="1000" class="form-control" id="course" name="course" rows="2"></textarea>
     </div>
     <div class="text-center">
         <button class="btn btn-dark" name="confirm" type="submit" value="<?php echo $to_update ?>">Confirm</button>

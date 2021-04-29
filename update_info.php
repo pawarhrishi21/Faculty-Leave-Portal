@@ -6,8 +6,7 @@ require 'vendor/autoload.php';
 $client = new MongoDB\Client("mongodb://localhost:27017");
 $collection = $client->facultyProfileDB->profile;
 session_start();
-//$user_id = $_SESSION["id"];
-$user_id = 'abhinav';
+$user_id = $_SESSION["id"];
 
 if(isset($_POST["confirm"])){
     $updateResult = $collection->updateOne(
@@ -30,8 +29,6 @@ if(!isset($_POST["edit"])){
     header("Location: profile.php");
     exit;
 }
-
-
 
 $document_info = $collection->findOne(
     ['userid' => $user_id],

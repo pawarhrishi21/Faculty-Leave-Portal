@@ -13,7 +13,7 @@ if(isset($_POST["confirm"])){
     $tdl_to_insert = [
         "Title" => $_POST["title"],
         "Description" => $_POST["description"],
-        "Link" => $_POST["link"]
+        "Date" => $_POST["date"]
     ];
     
     $to_update = $_POST["confirm"];
@@ -38,7 +38,7 @@ $user_id = $_SESSION["id"];
     <h4><?php echo "Insert ".$to_update ?></h4>
 </div>
 
-<form class="mx-auto mt-5 border border-dark py-5" action="insert_tdl.php" method="POST" style="width:700px">
+<form class="mx-auto mt-5 border border-dark py-5" action="insert_tdd.php" method="POST" style="width:700px">
     <div class="form-group col-md-8 mx-auto">
         <label for="title">Title</label>
         <textarea maxlength="1000" class="form-control" id="title" name="title" rows="2"></textarea>
@@ -50,8 +50,8 @@ $user_id = $_SESSION["id"];
     </div>
 
     <div class="form-group col-md-8 mx-auto">
-        <label for="link">Link</label>
-        <textarea maxlength="1000" class="form-control" id="link" name="link" rows="1"></textarea>
+        <label for="date">Date</label>
+        <textarea maxlength="1000" class="form-control" id="date" name="date" rows="1"></textarea>
     </div>
     <div class="text-center">
         <button class="btn btn-dark" name="confirm" type="submit" value="<?php echo $to_update ?>">Confirm</button>

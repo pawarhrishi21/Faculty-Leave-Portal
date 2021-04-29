@@ -6,21 +6,22 @@ require 'vendor/autoload.php';
 $client = new MongoDB\Client("mongodb://localhost:27017");
 $collection = $client->facultyProfileDB->profile;
 session_start();
-//$user_id = $_SESSION["id"];
-$user_id = 'abhinav';
+$user_id = $_SESSION["id"];
 
 if(isset($_POST["confirm"])){
 
     $updated_bio = $_POST["biography"];
     $updateResult = $collection->updateOne(
-        ['userid' => 'abhinav'],
+        ['userid' => $user_id],
         ['$set' => ['Biography' => $updated_bio]]
     );
     header('Location: profile.php');
+    exit;
 }
 
 if(!isset($_POST["submit"])){
-    echo "notset";
+    header('Location: profile.php');
+    exit;
 }
 
 

@@ -1,4 +1,4 @@
-<!-- Header for all the pages -->
+<!-- Header for pages without login-->
 <?php
 $db_connection = pg_connect("host=localhost dbname=faculty-portal user=postgres password=hp");
 ?>

@@ -1,12 +1,10 @@
 <?php include "static/header.php"?>
 <?php
-// Temporary section for mongo conn
+
 require 'vendor/autoload.php';
 
 $client = new MongoDB\Client("mongodb://localhost:27017");
 $collection = $client->facultyProfileDB->profile;
-
-$document = $collection->findOne(['userid' => 'abhinav']);
 
 session_start();
 $_SESSION['id'] = $document['userid'];
@@ -47,7 +45,7 @@ $_SESSION['id'] = $document['userid'];
         <p><?php echo $document['Biography'] ?></p>
     <!-- </div> -->
     <form action="update_bio.php" method="post">
-        <button class="btn btn-dark" type="submit" >Edit Bio</button>
+        <button class="btn btn-dark" type="submit" name="submit">Edit Bio</button>
     </form>
 </div>
 
@@ -90,6 +88,9 @@ $_SESSION['id'] = $document['userid'];
     <?php        
         }
     ?>
+    <form action="insert_li.php" method="post">
+        <button class="btn btn-dark mt-3" type="submit" name="add" value="CoursesTaught" >Add Course</button>
+    </form>
 </div>
 
 
@@ -104,6 +105,10 @@ $_SESSION['id'] = $document['userid'];
     <?php        
         }
     ?>
+
+    <form action="insert_tdd.php" method="post">
+            <button class="btn btn-dark" type="submit" name="add" value="Academics" >Add Academics</button>
+    </form>
 </div>
 
 
