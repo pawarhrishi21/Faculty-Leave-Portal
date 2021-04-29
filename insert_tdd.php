@@ -20,7 +20,8 @@ if(isset($_POST["confirm"])){
 
     $updateResult = $collection->updateOne(
         ['userid' => $user_id],
-        ['$push' => [$to_update => $tdl_to_insert]]
+        ['$push' => [$to_update => $tdl_to_insert]],
+        ['upsert' => true]
     );
     header('Location: profile.php');
 }

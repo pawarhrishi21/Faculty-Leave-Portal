@@ -13,7 +13,8 @@ if(isset($_POST["confirm"])){
     $updated_bio = $_POST["biography"];
     $updateResult = $collection->updateOne(
         ['userid' => $user_id],
-        ['$set' => ['Biography' => $updated_bio]]
+        ['$set' => ['Biography' => $updated_bio]],
+        ['upsert' => true]
     );
     header('Location: profile.php');
     exit;

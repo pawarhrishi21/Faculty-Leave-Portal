@@ -18,7 +18,8 @@ if(isset($_POST["confirm"])){
                 'Department' => $_POST["Department"],
                 'ResearchInterests' => $_POST["ResearchInterests"]
             ],
-        ]
+        ],
+        ['upsert' => true]
     );
     header('Location: profile.php');
     exit;
