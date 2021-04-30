@@ -42,11 +42,11 @@ if(!isset($_POST["submit"]))
     }
 
 ?>
-<div class="container mx-auto mt-5 border border-dark pb-5">
+<div class="container mx-auto mt-5 border shadow pb-5">
 
-    <div class="alert alert-dark" role="alert">
+    <h6 class="m-3">
     Fill the dates for the start and the end of leave days (Both inclusive).
-    </div>
+    </h6>
 
     <form name="Filter" method="POST" action="apply_leave.php">
     
@@ -87,7 +87,7 @@ if(!isset($_POST["submit"]))
         $leaves_left = $row[0];
 
 ?>
-<div class="container border border-dark mt-5 px-5 pb-5">
+<div class="container border shadow mt-5 px-5 pb-5">
     <div class="alert alert-info">
         <p>The number of leaves you have left : <?php echo "$leaves_left"; ?> <?php if($retrospective == 1){echo "<p>NOTE: THIS IS A RETROSPECTIVE LEAVE.</p>";}?>
 </p>

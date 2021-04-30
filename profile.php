@@ -12,10 +12,10 @@ $document = $collection->findOne(['userid' => $user_id]);
 ?>
 
 <div class="mt-3 ml-3">
-    <img id="profile-pic" src="img/profile_picture.jfif" alt="Profile Picture">
+    <img id="profile-pic" src="img/profile_picture.png" alt="Profile Picture">
 </div>
 
-<div class="container border border-dark mt-5 p-4 bg-dark text-white w-50">
+<div class="container shadow-lg border mt-5 p-4 bg-dark text-white w-50">
     <div class="row">
         <div class="col">Name</div>
         <div class="col"><?php echo $document['Name'] ?></div>
@@ -40,7 +40,7 @@ $document = $collection->findOne(['userid' => $user_id]);
 
 
 
-<div class="container mt-5 p-3 w-75"> 
+<div class="container shadow border mt-5 p-3 w-75"> 
     <!-- <div class="jumbotron jumbotron-fluid bg-dark text-white">  bg-dark text-white-->
         <h3>Biography</h3>
         <p><?php echo $document['Biography'] ?></p>
@@ -50,7 +50,7 @@ $document = $collection->findOne(['userid' => $user_id]);
     </form>
 </div>
 
-<div class="container mt-5 p-3 w-75"> 
+<div class="container shadow border mt-5 p-3 w-75"> 
     <h3>Research Publications</h3>
     <?php
         foreach ($document["Researches"] as $research) {
@@ -68,7 +68,7 @@ $document = $collection->findOne(['userid' => $user_id]);
     </form>
 </div>
 
-<div class="container mt-5 p-3 w-75"> 
+<div class="container shadow border mt-5 p-3 w-75"> 
     <h3>Achievements</h3>
     <?php
         foreach ($document["Achievements"] as $achievement) {
@@ -86,7 +86,7 @@ $document = $collection->findOne(['userid' => $user_id]);
     </form>
 </div>
 
-<div class="container mt-5 p-3 w-75"> 
+<div class="container shadow border mt-5 p-3 w-75"> 
     <h3>Courses Taught</h3>
     <?php
         foreach ($document["CoursesTaught"] as $course) {
@@ -106,7 +106,7 @@ $document = $collection->findOne(['userid' => $user_id]);
 
 
 
-<div class="container mt-5 p-3 w-75"> 
+<div class="container shadow border mt-5 p-3 w-75"> 
     <h3>Education / Academic Qualifications </h3>
     <?php
         foreach ($document["Academics"] as $academic) {

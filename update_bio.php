@@ -33,7 +33,7 @@ $document_bio = $collection->findOne(
 );
 
 ?>
-<div class="container border border-dark mt-5 px-5 py-5">
+<div class="container border shadow mt-5 px-5 py-5">
     <form action="update_bio.php" method="post">
         <div class="form-group">
             <label for="text-area"><strong>Update your biography</strong></label>

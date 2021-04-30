@@ -32,7 +32,7 @@ else
 }
 ?>
 
-<form class="mx-auto mt-5 border border-dark py-5" action="login.php" method="POST" style="width:700px">
+<form class="mx-auto mt-5 border shadow py-5" action="login.php" method="POST" style="width:700px">
     <div class="form-group col-md-6 mx-auto">
     <label for="login-userid"> User ID</label>
     <input class="form-control" type="text" name="userid" id="login-userid" placeholder="Enter user id">

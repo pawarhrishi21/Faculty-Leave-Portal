@@ -55,7 +55,7 @@ include "static/header.php"?>
 
 ?>
 
-  <div class="container mt-5">
+  <div class="container border shadow mt-5">
     <form action="update_application.php" method="post">
       <div class="form-group">
           <label for="comment">Enter comment</label>

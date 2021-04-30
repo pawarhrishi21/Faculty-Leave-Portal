@@ -30,7 +30,7 @@
     {
         $applicationid= $applications[$i]['appid'];
 ?>
-    <div class="container border border-dark mt-5 p-4">
+    <div class="container border shadow mt-5 p-4">
         <div class="row">
             <div class="col">Application id</div>
             <div class="col"><?php echo $applications[$i]['appid'];?></div>

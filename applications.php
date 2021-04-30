@@ -11,7 +11,7 @@
     {
         $applicationid= $applications[$i]['appid'];
 ?>
-    <div class="container border border-dark mt-5 p-4">
+    <div class="container border shadow mt-5 p-4">
         <div class="row">
             <div class="col">Application id</div>
             <div class="col"><?php echo $applications[$i]['appid'];?></div>
@@ -40,7 +40,17 @@
             </div>
         </div>
     </div>
-<?php } ?>
+<?php } 
+
+if(count($applications) == 0){
+?>
+    <div class="jumbotron">
+        <h3>No applications till date</h3>
+    </div>
+
+<?php
+}
 
 
+?>
 <?php include("static/footer.php"); ?>

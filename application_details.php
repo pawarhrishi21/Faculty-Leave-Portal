@@ -55,7 +55,7 @@ include "static/header.php"?>
         $_SESSION["application_id"] = $application_id;
         $_SESSION["status_of_application"] = $status;
 ?>
-        <div class="container mt-4">
+        <div class="container shadow border mt-4">
             <form action="insert_comment.php" method="post">
             <div class="form-group">
                 <label for="comment">Enter comment</label>

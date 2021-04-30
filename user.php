@@ -30,7 +30,7 @@
     $_SESSION["user_position"] = $position;
     $_SESSION["user_dept"] = $department;
 ?>
-<div class="container border border-dark mt-5 p-4">
+<div class="container shadow border mt-5 p-4">
     <div class="row">
         <div class="col">Name</div>
         <div class="col"><?php echo $name;?></div>
@@ -50,7 +50,7 @@
     if($position != 'Director') # User's leave application section
     {
 ?>
-        <div class="container mt-5 border border-dark p-4">
+        <div class="container shadow mt-5 border p-4">
             <h3 class="mb-4">My Leave Applications</h3>
             <div class="btn-group" role="group">
             <form action="user.php" method="post">
@@ -66,7 +66,7 @@
     if($position == 'HOD' || $position == 'Dean FA' || $position == 'Director') # Management of other's applications
     {
 ?>
-        <div class="container mt-5 border border-dark p-4">
+        <div class="container shadow mt-5 border p-4">
             <h3 class="mb-4">Manage Faculty Applications</h3>
             <div class="btn-group" role="group">
                 <form action="manage_applications.php" method="post">
@@ -82,7 +82,7 @@
     if($position == 'Director') # Change positions
     {
 ?>
-        <div class="container mt-5 border border-dark p-4">
+        <div class="container shadow mt-5 border p-4">
             <h3 class="mb-4">Faculty Role Management</h3>
             <form action="manage_positions.php" method="post">
                 <button type="submit" class="btn btn-dark border border-white mx-auto" name="update-position">Faculty Position Management</button>

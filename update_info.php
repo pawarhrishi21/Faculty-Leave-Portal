@@ -45,7 +45,7 @@ $document_info = $collection->findOne(
 );
 
 ?>
-<div class="container border border-dark mt-5 px-5 py-5">
+<div class="container border shadow mt-5 px-5 py-5">
     <form action="update_info.php" method="post">
         <div class="form-group">
             <label for="Name"><strong>Name</strong></label>

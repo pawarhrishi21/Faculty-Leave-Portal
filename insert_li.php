@@ -34,7 +34,7 @@ $user_id = $_SESSION["id"];
     <h4><?php echo "Insert ".$to_update ?></h4>
 </div>
 
-<form class="mx-auto mt-5 border border-dark py-5" action="insert_li.php" method="POST" style="width:700px">
+<form class="mx-auto mt-5 border shadow py-5" action="insert_li.php" method="POST" style="width:700px">
     <div class="form-group col-md-8 mx-auto">
         <label for="course">Course Details</label>
         <textarea maxlength="1000" class="form-control" id="course" name="course" rows="2"></textarea>
