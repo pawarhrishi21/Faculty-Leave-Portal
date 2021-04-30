@@ -1,17 +1,17 @@
 <?php include "static/header.php"?>
 <?php
-require 'vendor/autoload.php';
+    require 'vendor/autoload.php';
 
-$client = new MongoDB\Client("mongodb://localhost:27017");
-$collection = $client->facultyProfileDB->profile;
-session_start();
-$user_id = $_SESSION['id'];
+    $client = new MongoDB\Client("mongodb://localhost:27017");
+    $collection = $client->facultyProfileDB->profile;
+    session_start();
+    $user_id = $_SESSION['id'];
 
-$document = $collection->findOne(['userid' => $user_id]);
+    $document = $collection->findOne(['userid' => $user_id]);
 
 ?>
 
-<div class="mt-3 ml-3">
+<div class="mt-4 ml-3">
     <img id="profile-pic" src="img/profile_picture.png" alt="Profile Picture">
 </div>
 
@@ -41,10 +41,8 @@ $document = $collection->findOne(['userid' => $user_id]);
 
 
 <div class="container shadow border mt-5 p-3 w-75"> 
-    <!-- <div class="jumbotron jumbotron-fluid bg-dark text-white">  bg-dark text-white-->
         <h3>Biography</h3>
         <p><?php echo $document['Biography'] ?></p>
-    <!-- </div> -->
     <form action="update_bio.php" method="post">
         <button class="btn btn-dark" type="submit" name="submit">Edit Bio</button>
     </form>

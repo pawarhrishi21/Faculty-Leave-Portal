@@ -36,63 +36,89 @@ $document = $collection->findOne(['userid' => $user_id]);
 
 
 
+<?php if($document['Biography'])
+{
+?>
+    <div class="container border shadow mt-5 p-3 w-75"> 
+            <h3>Biography</h3>
+            <p><?php echo $document['Biography'] ?></p>
+    </div>
+<?php
+}
+?>
 
-<div class="container border shadow mt-5 p-3 w-75"> 
-    <!-- <div class="jumbotron jumbotron-fluid bg-dark text-white">  bg-dark text-white-->
-        <h3>Biography</h3>
-        <p><?php echo $document['Biography'] ?></p>
-    <!-- </div> -->
-</div>
+<?php if(count($document['Researches']))
+{
+?>
+    <div class="container border shadow mt-5 p-3 w-75"> 
+        <h3>Research Publications</h3>
+        <?php
+            foreach ($document["Researches"] as $research) {
+        ?>
+            <h5><a href=<?php echo $research["Link"]; ?>><?php echo $research["Title"]; ?></a></h5>
+            <p><?php echo $research["Description"]; ?></p>
+        <?php        
+            }
+        ?>
+    </div>
 
-<div class="container border shadow mt-5 p-3 w-75"> 
-    <h3>Research Publications</h3>
-    <?php
-        foreach ($document["Researches"] as $research) {
-    ?>
-        <h5><a href=<?php echo $research["Link"]; ?>><?php echo $research["Title"]; ?></a></h5>
-        <p><?php echo $research["Description"]; ?></p>
-    <?php        
-        }
-    ?>
-</div>
+<?php
+}
+?>
 
-<div class="container border shadow mt-5 p-3 w-75"> 
-    <h3>Achievements</h3>
-    <?php
-        foreach ($document["Achievements"] as $achievement) {
-    ?>
-        <h5><a href=<?php echo $achievement["Link"]; ?>><?php echo $achievement["Title"]; ?></a></h5>
-        <p><?php echo $achievement["Description"]; ?></p>
-    <?php        
-        }
-    ?>
-</div>
+<?php if(count($document['Achievements']))
+{
+?>
 
-<div class="container border shadow mt-5 p-3 w-75"> 
-    <h3>Courses Taught</h3>
-    <?php
-        foreach ($document["CoursesTaught"] as $course) {
-    ?>
-        <li><?php echo $course; ?></li>
-        
-    <?php        
-        }
-    ?>
-</div>
+    <div class="container border shadow mt-5 p-3 w-75"> 
+        <h3>Achievements</h3>
+        <?php
+            foreach ($document["Achievements"] as $achievement) {
+        ?>
+            <h5><a href=<?php echo $achievement["Link"]; ?>><?php echo $achievement["Title"]; ?></a></h5>
+            <p><?php echo $achievement["Description"]; ?></p>
+        <?php        
+            }
+        ?>
+    </div>
+<?php
+}
+?>
 
+<?php if(count($document['CoursesTaught']))
+{
+?>
+    <div class="container border shadow mt-5 p-3 w-75"> 
+        <h3>Courses Taught</h3>
+        <?php
+            foreach ($document["CoursesTaught"] as $course) {
+        ?>
+            <li><?php echo $course; ?></li>
+            
+        <?php        
+            }
+        ?>
+    </div>
+<?php
+}
+?>
 
-
-<div class="container border shadow mt-5 p-3 w-75"> 
-    <h3>Education / Academic Qualifications </h3>
-    <?php
-        foreach ($document["Academics"] as $academic) {
-    ?>
-        <h6><?php echo $academic["Title"]; ?></a></h6>
-        <p><?php echo $academic["Description"].", "; ?> <?php echo $academic["Date"]; ?></p>
-    <?php        
-        }
-    ?>
-</div>
-
+<?php if(count($document['Academics']))
+{
+?>
+    <div class="container border shadow mt-5 p-3 w-75"> 
+        <h3>Education / Academic Qualifications </h3>
+        <?php
+            foreach ($document["Academics"] as $academic) {
+        ?>
+            <h6><?php echo $academic["Title"]; ?></a></h6>
+            <p><?php echo $academic["Description"].", "; ?> <?php echo $academic["Date"]; ?></p>
+        <?php        
+            }
+        ?>
+    </div>
+<?php
+}
+?>
 
 <?php include "static/footer.php" ?>
