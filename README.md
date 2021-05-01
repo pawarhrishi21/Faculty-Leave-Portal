@@ -1,9 +1,11 @@
-# Faculty-Leave-Portal
-	A portal to manage faculty leave applications at an academic university.
+# Faculty-Portal
+	An faculty portal for a university to
+	- View and store academic profile of faculties which include their background, publications, courses, education and achievements. Implemented using NoSQL database (MongoDB) with PHP. 
+	- Apply for leaves and manage leave applications (approve/reject/comment). Implemented using PostgreSQL database with PHP.
 
 ### Tech Stack
-	PHP, PostgreSQL
-	
+	PHP, PostgreSQL, MongoDB
+
 ### Run locally
 - Installation Prerequisites
 	-	PHP 8.0 or above, PostgreSQL

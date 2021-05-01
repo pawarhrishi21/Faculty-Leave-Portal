@@ -110,7 +110,7 @@
         foreach ($document["Academics"] as $academic) {
     ?>
         <h6><?php echo $academic["Title"]; ?></a></h6>
-        <p style="display:inline;"><?php echo $academic["Description"].", "; ?> <?php echo $academic["Date"]; ?></p>
+        <p style="display:inline;"><?php echo $academic["Description"].", "; ?> <span class="acad-date"><?php echo $academic["Date"];?></span></p>
         <form action="delete_tdd.php" method="post">
             <button class="btn btn-outline-danger btn-sm mb-2" type="submit" name="Academics" value="<?php echo $academic['Title'] ?>">X</button>
         </form>
