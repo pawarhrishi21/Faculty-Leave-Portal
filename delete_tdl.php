@@ -1,4 +1,11 @@
+<!-- 
+    TDL denotes mongoDB documents with [Title, Description, Link] structure.
+    Currently, "Researches" and "Achievements" follow this structure.
+    This file deals with with deletion of these elements in the faculty profile.
+ -->
+
 <?php include "static/header.php"?>
+
 <?php
 
 require 'vendor/autoload.php';

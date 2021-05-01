@@ -1,4 +1,11 @@
+<!-- 
+    li denotes mongoDB documents with a simple list structure.
+    Currently, "CoursesTaught" follows this structure.
+    This file deals with with deletion of these elements in the faculty profile.
+ -->
+
 <?php include "static/header.php"?>
+
 <?php
 
 require 'vendor/autoload.php';

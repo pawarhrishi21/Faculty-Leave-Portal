@@ -1,4 +1,11 @@
+<!-- 
+    TDD denotes mongoDB documents with [Title, Description, Date] structure.
+    Currently, "Academics" follows this structure.
+    This file deals with with insertion of these elements in the faculty profile.
+ -->
+
 <?php include "static/header.php"?>
+
 <?php
 
 require 'vendor/autoload.php';
