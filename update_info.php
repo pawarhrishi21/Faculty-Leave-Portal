@@ -16,7 +16,8 @@ if(isset($_POST["confirm"])){
                 'Email' => $_POST["Email"],
                 'Position' => $_POST["Position"],
                 'Department' => $_POST["Department"],
-                'ResearchInterests' => $_POST["ResearchInterests"]
+                'ResearchInterests' => $_POST["ResearchInterests"],
+                'PictureLink' => $_POST["PictureLink"]
             ],
         ],
         ['upsert' => true]
@@ -39,7 +40,8 @@ $document_info = $collection->findOne(
         'Email' => 1,
         'Position' => 1,
         'Department' => 1,
-        'ResearchInterests' => 1
+        'ResearchInterests' => 1,
+        'PictureLink' => 1
         ]
     ]
 );
@@ -66,6 +68,10 @@ $document_info = $collection->findOne(
         <div class="form-group">
             <label for="ResearchInterests"><strong>ResearchInterests</strong></label>
             <textarea class="form-control" id="ResearchInterests" name="ResearchInterests" rows="3"><?php echo $document_info['ResearchInterests'] ?></textarea>
+        </div>
+        <div class="form-group">
+            <label for="PictureLink"><strong>PictureLink</strong></label>
+            <textarea class="form-control" id="PictureLink" name="PictureLink" rows="1"><?php echo $document_info['PictureLink'] ?></textarea>
         </div>
 
         <button type="submit" class="btn btn-dark" name="confirm">Confirm</button>

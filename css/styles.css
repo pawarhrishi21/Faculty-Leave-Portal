@@ -7,10 +7,15 @@
     color: #D3D3D3;
     background-color: #343A40;
   }
+
 .footer-p {
     top: auto;
   }
 
-#profile-pic{
+.profile-pic{
     position: absolute;
+    max-width: 223px;
+    max-height:223px;
+    border-radius: 50%;
 }
+

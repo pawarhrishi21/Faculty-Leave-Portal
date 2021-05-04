@@ -8,12 +8,17 @@
     $user_id = $_SESSION['id'];
 
     $document = $collection->findOne(['userid' => $user_id]);
-
 ?>
 
-<div class="mt-4 ml-3">
-    <img id="profile-pic" src="img/profile_picture.png" alt="Profile Picture">
+<?php if($document['PictureLink']){ ?>
+<div class="mt-5 ml-3">
+    <img class="profile-pic" src="<?php echo $document['PictureLink'] ?>" alt="Profile Picture">
 </div>
+<?php }else{ ?>
+    <div class="mt-5 ml-3">
+    <img class="profile-pic" src="img/profile_picture.png" alt="Profile Picture">
+</div>
+<?php } ?>
 
 <div class="container shadow-lg border mt-5 p-4 bg-dark text-white w-50">
     <div class="row">
@@ -31,6 +36,7 @@
         <div class="w-100"></div>
         <div class="col">Research Interests</div>
         <div class="col"><?php echo $document['ResearchInterests'] ?></div>
+        
     </div>
     <form action="update_info.php" method="post">
         <button class="btn btn-primary mt-2" type="submit" name="edit">Edit Info</button>

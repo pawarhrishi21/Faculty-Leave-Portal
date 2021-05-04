@@ -11,9 +11,15 @@ $document = $collection->findOne(['userid' => $user_id]);
 
 ?>
 
+<?php if($document['PictureLink']){ ?>
 <div class="mt-4 ml-3">
-    <img id="profile-pic" src="img/profile_picture.png" alt="Profile Picture">
+    <img class="profile-pic" src="<?php echo $document['PictureLink'] ?>" alt="Profile Picture">
 </div>
+<?php }else{ ?>
+    <div class="mt-4 ml-3">
+    <img class="profile-pic" src="img/profile_picture.png" alt="Profile Picture">
+</div>
+<?php } ?>
 
 <div class="container border shadow-lg mt-5 p-4 bg-dark text-white w-50">
     <div class="row">
