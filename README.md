@@ -1,7 +1,7 @@
 # Faculty-Portal
 A faculty portal for a university to
-- View and store academic profile of faculties which include their background, publications, courses, education and achievements. Implemented using NoSQL database (MongoDB) with PHP. [ Phase 2 of the project ]
-- Apply for leaves and manage leave applications (approve/reject/comment) depending upon level of authority (Faculty/HOD/Dean/Director). Implemented using PostgreSQL database with PHP. [ Phase 1 of the project ]
+- View and store academic profile of faculties which include their background, publications, courses, education and achievements. Implemented using NoSQL database (MongoDB) with PHP [Phase 2].
+- Apply for leaves and manage leave applications (approve/reject/comment) depending upon level of authority (Faculty/HOD/Dean/Director). Implemented using PostgreSQL database with PHP [Phase 1].
 
 ### Tech Stack
 	PHP, PostgreSQL, MongoDB
